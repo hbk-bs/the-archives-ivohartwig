@@ -28,4 +28,22 @@ a {
 Setzt die Standardstile von Links zurück und entfernt die Unterstreichung.
 */
 }
+
+
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+}
+
+small {
+  font-size: 80%;
+/**
+ * Add the correct font size in all browsers.
+ */
+}
+
 /*css reset soft end*/
