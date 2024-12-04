@@ -10,7 +10,8 @@ let music; // Musik-Variable
 
 function preload() {
   img = loadImage("https://hbk-bs.github.io/the-archives-ivohartwig/assets/images/Platte.png");
-  music = loadSound("path/to/your/musicfile.mp3"); // Lade deine Musikdatei
+  music = loadSound("https://raw.githubusercontent.com/hbk-bs/the-archives-ivohartwig/main/01%20-%20ten.mp3"
+); // Lade deine Musikdatei
 }
 
 function setup() {
@@ -80,6 +81,7 @@ function mousePressed() {
 
   // Starte Musik, wenn die Maus gedrückt wird
   if (!music.isPlaying()) {
+    console.log("Music starts playing...");
     music.loop(); // Startet die Musik im Loop
   }
 }
@@ -90,6 +92,7 @@ function mouseReleased() {
 
   // Stoppe Musik, wenn die Maus losgelassen wird
   if (music.isPlaying()) {
+    console.log("Music stops...");
     music.stop(); // Stoppt die Musik
   }
 }
