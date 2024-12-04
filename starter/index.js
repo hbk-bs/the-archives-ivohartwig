@@ -14,7 +14,7 @@ function setup(){
 function draw() {
   background("black")
   circle (x,y,radius);
-  speed *=1.04;
+  speed *=1.01;
   x+=speed;
   console.log(x)
   if (x>width + radius){
