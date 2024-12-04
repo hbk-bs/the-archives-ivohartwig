@@ -10,7 +10,7 @@ let music; // Musik-Variable
 
 function preload() {
   img = loadImage("https://hbk-bs.github.io/the-archives-ivohartwig/assets/images/Platte.png");
-  music = loadSound("https://raw.githubusercontent.com/hbk-bs/the-archives-ivohartwig/main/01%20-%20ten.mp3"
+  music = loadSound("https://hbk-bs.github.io/the-archives-ivohartwig/assets/images/L&W - MAKKO.mp3"
 ); // Lade deine Musikdatei
 }
 
