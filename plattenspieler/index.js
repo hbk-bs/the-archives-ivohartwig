@@ -53,7 +53,7 @@ function draw() {
   //quad(x(0.6), y(0.75), x(0.85), y(0.75), x(0.85), y(0.8), x(0.6), y(0.8));
 
   // Untergrund Platte
-  fill("black");
+  fill("#9e9e9e");
   circle(x(0.5), y(0.5), s(0.49));
 
   // Platte
