@@ -11,8 +11,13 @@ let radius1 = 0.08
 let circleX1 = 0.2
 let circleY1 = 0.35
 let radius2 = 0.08
+let circleX2 = 0.22
+let circleY2 = 0.7
+let radius3 = 0.08
 
 let music; // Musik-Variable
+
+let pa = 600
 
 function preload() {
   img = loadImage("https://hbk-bs.github.io/the-archives-ivohartwig/assets/images/Platte.png");
@@ -36,6 +41,8 @@ function draw() {
   // Plattenspieler links quad
   fill("#4a3c35");
   quad(x(0.15), y(0.6), x(0.35), y(0.6), x(0.35), y(0.8), x(0.15), y(0.8));
+  fill("#9e9e9e")
+  circle(x(circleX2), y(circleY2), s(radius3));
 
   //play and stop
   fill("#9e9e9e");
@@ -62,7 +69,7 @@ function draw() {
   rotate(angle); 
   imageMode(CENTER); 
   let scaleFactor = width * 0.48; 
-  image(img, 0, 0, scaleFactor, scaleFactor); 
+  image(img, 0, pa, scaleFactor, scaleFactor); 
   angle += speed;
   pop();
 
@@ -102,7 +109,7 @@ function mousePressed() {
 
 function handleInteraction(px, py) {
   let d1 = dist(px, py, x(circleX), y(circleY));
-  if (d1 < s(radius1) / 2) {
+  if (d1 < s(radius1) / 2 && pa === 0) {
     grad += radians(35);
     speed += 0.02;
 
@@ -121,5 +128,10 @@ function handleInteraction(px, py) {
       console.log("Music stops...");
       music.stop(); // Stoppt die Musik
     }
+  }
+
+  let d3 = dist(px, py, x(circleX2), y(circleY2));
+  if (d3 < s(radius3) / 2) {
+    pa -=600
   }
 }
