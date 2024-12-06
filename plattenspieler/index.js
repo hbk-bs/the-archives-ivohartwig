@@ -15,9 +15,14 @@ let circleX2 = 0.22
 let circleY2 = 0.7
 let radius3 = 0.08
 
+let color1 = "black"
+let color2 = "black"
+let color3 = "black"
+
 let music; // Musik-Variable
 
 let pa = 600
+let clickCount = 0; // Klickzähler für den unteren Kreis
 
 function preload() {
   img = loadImage("https://hbk-bs.github.io/the-archives-ivohartwig/assets/images/Platte.png");
@@ -26,7 +31,8 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(500, 400);
+  const canvas = createCanvas(500,400);
+  canvas.parent("sketch");
   background("white"); 
 }
 
@@ -41,16 +47,43 @@ function draw() {
   // Plattenspieler links quad
   fill("#4a3c35");
   quad(x(0.15), y(0.6), x(0.35), y(0.6), x(0.35), y(0.8), x(0.15), y(0.8));
+
+  //Platte aussuchen 
   fill("#9e9e9e")
   circle(x(circleX2), y(circleY2), s(radius3));
+  let d3 = dist(mouseX, mouseY, x(circleX2), y(circleY2)); // Zweiter Kreis (Stop)
+  if (d3 < s(radius3) / 2 ){
+    color3="white"
+  }else{
+    color3="black"
+  }
+  fill(color3)
+  circle(x(0.22), y(0.7), s(0.05));
+  fill("#9e9e9e")
+  circle(x(0.22), y(0.7), s(0.025));
 
   //play and stop
   fill("#9e9e9e");
   circle(x(circleX), y(circleY), s(radius1));
   fill("#9e9e9e");
   circle(x(circleX1), y(circleY1), s(radius2));
-  fill("black")
+
+  let d1 = dist(mouseX, mouseY, x(circleX), y(circleY)); // Zweiter Kreis (Stop)
+  if (d1 < s(radius1) / 2 && pa === 0 && !isSpinning && !isArmMoving){
+    color1="white"
+  }else{
+    color1="black"
+  }
+  fill(color1)
   triangle(x(0.19), y(0.18), x(0.215), y(0.2), x(0.19), y(0.22))
+
+  let d2 = dist(mouseX, mouseY, x(circleX1), y(circleY1)); // Zweiter Kreis (Stop)
+  if (d2 < s(radius2) / 2 && pa === 0 && isSpinning && isArmMoving){
+    color2="white"
+  }else{
+    color2="black"
+  }
+  fill(color2)
   quad(x(0.185), y(0.33), x(0.195), y(0.33), x(0.195), y(0.37), x(0.185), y(0.37));
   quad(x(0.205), y(0.33), x(0.215), y(0.33), x(0.215), y(0.37), x(0.205), y(0.37));
 
@@ -107,31 +140,57 @@ function mousePressed() {
   handleInteraction(mouseX, mouseY); // Teilt die Logik mit touchStarted
 }
 
-function handleInteraction(px, py) {
-  let d1 = dist(px, py, x(circleX), y(circleY));
-  if (d1 < s(radius1) / 2 && pa === 0) {
-    grad += radians(35);
-    speed += 0.02;
+let isArmMoving = false; // Kontrolliert, ob der Arm sich bewegt
+let isSpinning = false; // Kontrolliert, ob die Platte sich dreht
 
-    if (!music.isPlaying()) {
-      console.log("Music starts playing...");
-      music.loop(); // Startet die Musik im Loop
+function handleInteraction(px, py) {
+  let d1 = dist(px, py, x(circleX), y(circleY)); // Erster Kreis (Start)
+  if (d1 < s(radius1) / 2 && pa === 0) {
+    // Aktion nur ausführen, wenn nichts läuft
+    if (!isSpinning && !isArmMoving) {
+      grad = radians(35); // Bewege den Arm
+      speed = 0.02; // Setze eine feste Geschwindigkeit
+      isSpinning = true; // Platte dreht sich
+      isArmMoving = true; // Arm bewegt sich
+
+      if (!music.isPlaying()) {
+        console.log("Music starts playing...");
+        music.loop(); // Startet die Musik im Loop
+      }
     }
   }
 
-  let d2 = dist(px, py, x(circleX1), y(circleY1));
+  let d2 = dist(px, py, x(circleX1), y(circleY1)); // Zweiter Kreis (Stop)
   if (d2 < s(radius2) / 2) {
-    grad = 0;
-    speed = 0;
+    // Aktion nur ausführen, wenn Platte läuft
+    if (isSpinning || isArmMoving) {
+      grad = 0; // Setze den Arm zurück
+      speed = 0; // Stoppe die Platte
+      isSpinning = false; // Platte dreht sich nicht
+      isArmMoving = false; // Arm bewegt sich nicht
 
-    if (music.isPlaying()) {
+      if (music.isPlaying()) {
+        console.log("Music stops...");
+        music.stop(); // Stoppt die Musik
+      }
+    }
+  }
+
+  let d3 = dist(px, py, x(circleX2), y(circleY2)); // Dritter Kreis
+  if (d3 < s(radius3) / 2) {
+    // Klickzähler erhöhen
+    clickCount++;
+    // Die Platte auf den Ursprung setzen, basierend auf der Klickanzahl
+    pa = clickCount % 2 === 0 ? 600 : 0;
+    if (pa===600){
       console.log("Music stops...");
       music.stop(); // Stoppt die Musik
+      grad = 0; // Setze den Arm zurück
+      speed = 0; // Stoppe die Platte
+      isSpinning = false; // Platte dreht sich nicht
+      isArmMoving = false; // Arm bewegt sich nicht
     }
   }
-
-  let d3 = dist(px, py, x(circleX2), y(circleY2));
-  if (d3 < s(radius3) / 2) {
-    pa -=600
-  }
 }
+
+
