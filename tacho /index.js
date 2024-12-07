@@ -2,7 +2,7 @@ let centerX, centerY; // Mittelpunkt des Kreises
 let radiustacho; // Radien der Kreise
 
 let angle = 1.9; // Aktueller Winkel für Mitte
-let speed = 0.08;
+let speed = 0.05;
 let isMousePressed = false; // Variable für den Mausstatus
 let tachrunter = false
 
@@ -36,30 +36,32 @@ function draw() {
   line(centerX, centerY, x2, y2);
 
   // Wenn Maus gedrückt, erhöhe den Winkel
-  if (isMousePressed) {
+  if (isMousePressed && angle < PI * 1.9) {
     angle += speed;
-  }
-  if (tachrunter){
-    angle -= speed
-  }
-  if(angle > PI * 1.9 ){
-    tachrunter = true  
-  }
-  if(angle < 1.9){
-    angle=1.9
+    tachrunter = false; // Während Maus gedrückt, kein Absenken
   }
 
-  if(angle > PI * 0.9){
-    speed = 0.02
-  }else{
-    speed = 0.03
+  // Wenn tachrunter aktiv, verringere den Winkel
+  if (tachrunter && angle > 1.9) {
+    angle -= speed * 0.2;
+  }
+
+  // Begrenze den Winkelbereich
+  if (angle > PI * 1.9) {
+    angle = PI * 1.9; // Oberes Limit
+    tachrunter = true; // Absenken aktivieren
+  }
+  if (angle < 1.9) {
+    angle = 1.9; // Unteres Limit
+    tachrunter = false; // Absenken deaktivieren
   }
   
 
-
-  strokeWeight(0)
-  circle(x(circleX),y(circleY),s(radiuspedal))
+  // Zeichne den Kreis
+  strokeWeight(0);
+  circle(x(circleX), y(circleY), s(radiuspedal));
 }
+
 
 function mousePressed() {
   let d1 = dist(mouseX, mouseY, x(circleX), y(circleY)); // Zweiter Kreis (Stop)
