@@ -2,16 +2,13 @@ let centerX, centerY; // Mittelpunkt des Kreises
 let radiustacho; // Radien der Kreise
 let radiustacho2;
 let radiustacho3;
-let radiustacho4;
 let angle = 0;  
 let angle2 =0;   
-let angle3 =0;
-let angle4 =0;  // Aktueller Winkel für Mitte
+let angle3 =0;  // Aktueller Winkel für Mitte
       
 let speed = 0.01;
 let speed2 = 0.02;
 let speed3 = 0.03;
-let speed4 = 0.04;
 
 let clickCount = 0;
 
@@ -28,10 +25,9 @@ function setup() {
 
   // Setze Radien relativ zur Leinwandgröße
  
-  radiustacho = width * 0.1;  // 30% der Breite
-  radiustacho2 = width * 0.2;
-  radiustacho3 = width * 0.3;
-  radiustacho4 = width * 0.4;
+  radiustacho = width * 0.15;  // 30% der Breite
+  radiustacho2 = width * 0.3;
+  radiustacho3 = width * 0.45
 
  
 
@@ -62,12 +58,6 @@ function draw() {
   angle3 += speed3
   stroke(color1)
   line(x2,y2,x3,y3)
-
-  let x4 = centerX + radiustacho4 * cos(angle4);
-  let y4 = centerY + radiustacho4 * sin(angle4);
-  angle4 += speed4
-  stroke(color1)
-  line(x3,y3,x4,y4)
   
 
 
@@ -78,5 +68,4 @@ function mousePressed(){
   speed = clickCount % 1 === 1 ? speed : speed* -1;
   speed2 = clickCount % 1 === 1 ? speed2 : speed2* -1;
   speed3 = clickCount % 1 === 1 ? speed3 : speed3* -1;
-  speed4 = clickCount % 1 === 1 ? speed4 : speed4* -1;
 }
