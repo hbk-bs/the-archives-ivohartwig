@@ -1,67 +1,126 @@
 let x = 0;
 let y = 0;
+
 let x1 = 0;
 let y1 = 0;
+
 let radius;
+
 let speed1 = 1;
 let speed2 = 1;
-let color1 = "white"; 
-let color2 = "white"; 
+
+var numbers = [];
+
+let X = (n) => width * n;
+let Y = (n) => height * n;
+let S = (n) => (height > width ? height * n : width * n);
+
+
 
 function preload() {
-  img = loadImage("https://hbk-bs.github.io/the-archives-ivohartwig/assets/images/auto.png");
+  img1 = loadImage("https://hbk-bs.github.io/the-archives-ivohartwig/assets/images/auto2.png");
+  img2 = loadImage("https://hbk-bs.github.io/the-archives-ivohartwig/assets/images/auto.png");
 }
 
 function setup() {
-  const canvas = createCanvas(300, 300);
+  const canvas = createCanvas(400, 400);
   canvas.parent("sketch");
   y = 0;
-  x1 = width; 
-  y1 = 0; 
+  x1 = width +width*0.01 ; 
+  y1 = width*0.075 ; 
   radius = width/10
+  
   strokeWeight(0);
 }
 
 function draw() {
-  background("black");
+  background("lightgrey");
+  strokeWeight(0)
+  fill("grey")
+  push();
+  translate(width / 2, height / 2); // Verschiebt den Ursprung in die Mitte
+  rotate(PI / 4); // Dreht um 45 Grad (PI/4 Radiant)
+  quad(
+    -X(0.1), -Y(0.8),
+    X(0.1), -Y(0.8),
+    X(0.1), Y(0.8),
+    -X(0.1), Y(0.8)
+  );
+  pop();
+
+  // Zweiter grauer Bereich
+  push();
+  translate(width / 2, height / 2); // Verschiebt den Ursprung in die Mitte
+  rotate(PI / 4); // Dreht um 45 Grad (PI/4 Radiant)
+  quad(
+    -X(0.8), -Y(0.1),
+    X(0.8), -Y(0.1),
+    X(0.8), Y(0.1),
+    -X(0.8), Y(0.1)
+  );
+  pop();
+
+  stroke("white")
+strokeWeight(2)
+push()
+translate(0, 0 ) // Einheitliche vertikale Verschiebung für die erste Schleife
+rotate(QUARTER_PI) 
+let Y1 = -height
+for (let i = 0; i < 50; i++) {
+  const X1 = width * 0.71
+  const Y2 = Y1 + 15
+  Y1 += 20
+  line(X1, Y1, X1, Y2)
+}
+pop()
+
+stroke("white")
+strokeWeight(2)
+push()
+translate(0, height ) // Entsprechend konsistente vertikale Verschiebung für die zweite Schleife
+rotate(-QUARTER_PI) 
+let Y11 = -height
+for (let i = 0; i < 50; i++) {
+  const X2 = width * 0.71
+  const Y22 = Y11 + 15
+  Y11 += 20
+  line(X2, Y11, X2, Y22)
+}
+pop()
+
+  
+
+  
+
+  
+
+
 
   // Erster Kreis: horizontal und vertikal
-  fill(color1);
-  circle(x, y, radius);
-  speed1 *= 1.0;
+  imageMode(CENTER); // Setzt den Modus, sodass das Bild von der Mitte aus gezeichnet wird
+  image(img1, x, y, width / 10, height / 10); // Zeichnet das Bild in der Mitte
+  speed1 = 1.5;
   x += speed1; //nach rechts
   y += speed1; //nach unten
   console.log(x, y);
   if (x > width + radius) {
-    x = -radius;
+    x = -radius+ width*0.075;
     y = -radius;
     speed1 = 1;
   }
-  if (x > width / 2) {
-    color1 = "red";
-    speed1 = 1;
-  }
-  if (x < width / 2) {
-    color1 = "white";
-  }
+  
 
   // Zweiter Kreis: diagonal von rechts oben nach links unten
-  fill(color2);
-  circle(x1, y1, radius);
+  imageMode(CENTER); // Setzt den Modus, sodass das Bild von der Mitte aus gezeichnet wird
+  image(img2, x1, y1, width / 10, height / 10); // Zeichnet das Bild in der Mitte
   speed2 *= 1.0;
   x1 -= speed2; //nach links
   y1 += speed2; //nach unten
   console.log(x1, y1);
   if (y1 > height + radius || x1 < -radius) {
     x1 = width+radius; 
-    y1 = -radius; 
+    y1 = -radius + width*0.075 ; 
     speed2 = 1;
   }
-  if (y1 > height / 2) {
-    color2 = "blue";
-    speed2 = 1;
-  }
-  if (x1 > width / 2) {
-    color2 = "white";
-  }
+  
 }
