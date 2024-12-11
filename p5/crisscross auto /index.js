@@ -128,6 +128,7 @@ if (x > width + radius) {
 
 
 // Zweiter Kreis: diagonal von rechts oben nach links unten
+if(x>width/2){
 imageMode(CENTER); // Setzt den Modus, sodass das Bild von der Mitte aus gezeichnet wird
 image(img2, x1, y1, width / 10, height / 10); // Zeichnet das Bild in der Mitte
 speed2 *= 1.0;
@@ -139,9 +140,10 @@ if (y1 > height + radius || x1 < -radius) {
   y1 = -radius + width*0.075 ; 
   speed2 = 1;
 }
+}
 
 imageMode(CENTER); // Setzt den Modus, sodass das Bild von der Mitte aus gezeichnet wird
-image(img2, x2, y2, width / 10, height / 10); // Zeichnet das Bild in der Mitte
+//image(img2, x2, y2, width / 10, height / 10); // Zeichnet das Bild in der Mitte
 speed1 = 1.5;
 x2 += speed3; //nach rechts
 y2 -= speed3; //nach unten
@@ -153,7 +155,7 @@ if (x2 > width + radius) {
 }
 
 imageMode(CENTER); // Setzt den Modus, sodass das Bild von der Mitte aus gezeichnet wird
-image(img1, x3, y3, width / 10, height / 10); // Zeichnet das Bild in der Mitte
+//image(img1, x3, y3, width / 10, height / 10); // Zeichnet das Bild in der Mitte
 speed2 *= 1.0;
 x3 -= speed4; //nach links
 y3 -= speed4; //nach unten
