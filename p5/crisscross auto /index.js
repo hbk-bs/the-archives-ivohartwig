@@ -114,33 +114,40 @@ quad(X(0.5),Y(0.36),X(0.64),Y(0.5),X(0.5),Y(0.64),X(0.36),Y(0.5))
 
 
 
-imageMode(CENTER); // Setzt den Modus, sodass das Bild von der Mitte aus gezeichnet wird
-image(img1, x, y, width / 10, height / 10); // Zeichnet das Bild in der Mitte
-speed1 = 1;
-x += speed1; //nach rechts
-y += speed1; //nach unten
-console.log(x, y);
+// Animation Auto 1
+imageMode(CENTER);
+image(img1, x, y, width / 10, height / 10); 
+x += speed1;
+y += speed1;
+
 if (x > width + radius) {
-  x = -radius+ width*0.075;
+  x = -radius + width * 0.075;
   y = -radius;
   speed1 = 1;
 }
 
+ // Animation Auto 2
+ imageMode(CENTER);
+ image(img2, x1, y1, width / 10, height / 10);
+ x1 -= speed2;
+ y1 += speed2;
 
-// Zweiter Kreis: diagonal von rechts oben nach links unten
-if(x>width/2){
-imageMode(CENTER); // Setzt den Modus, sodass das Bild von der Mitte aus gezeichnet wird
-image(img2, x1, y1, width / 10, height / 10); // Zeichnet das Bild in der Mitte
-speed2 *= 1.0;
-x1 -= speed2; //nach links
-y1 += speed2; //nach unten
-console.log(x1, y1);
-if (y1 > height + radius || x1 < -radius) {
-  x1 = width+radius; 
-  y1 = -radius + width*0.075 ; 
-  speed2 = 1;
-}
-}
+ if (y1 > height + radius || x1 < -radius) {
+   x1 = width + radius; 
+   y1 = -radius + width * 0.075; 
+   speed2 = 1;
+ }
+
+ // Abstandsmessung zwischen Auto 1 und Auto 2
+ let distance = dist(x, y, x1, y1);
+ if (distance < width / 10) { 
+   // Animation zurücksetzen
+   x = width * 0.075;
+   y = 0;
+   x1 = -width + width * 0.075;
+   y1 = 0;
+   console.log("Autos berühren sich! Animation zurückgesetzt.");
+ }
 
 imageMode(CENTER); // Setzt den Modus, sodass das Bild von der Mitte aus gezeichnet wird
 //image(img2, x2, y2, width / 10, height / 10); // Zeichnet das Bild in der Mitte
