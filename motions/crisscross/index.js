@@ -103,6 +103,7 @@ for (let i = 0; i < 50; i++) {
 pop()
 
 fill("grey")
+stroke("grey")
 strokeWeight(0)
 quad(X(0.5),Y(0.36),X(0.64),Y(0.5),X(0.5),Y(0.64),X(0.36),Y(0.5))
 
