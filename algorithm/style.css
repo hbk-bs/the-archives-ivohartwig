@@ -177,6 +177,18 @@
   /* main style ends */
   
   /* footer style */
+  .footer {
+    display: flex;
+    justify-content: center; 
+    align-items: center;   
+    
+  }
+  
+  .me {
+    max-width: 60px; 
+    height: auto;  
+  }
+  
   /* footer style ends */
   
   @media(max-width: 600px) {
