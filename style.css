@@ -132,6 +132,17 @@
   /* main style ends */
   
   /* footer style */
+  .footer {
+    display: flex;
+    justify-content: center; 
+    align-items: center;   
+    
+  }
+  
+  .me {
+    max-width: 5%; 
+    height: auto;  
+  }
   
   /* footer style ends */
   
