@@ -90,6 +90,7 @@
   /* header style ends  */
   
   /* main style */
+
   h2 {
 	text-align:center;
 	color:white;
@@ -131,6 +132,7 @@
   /* main style ends */
   
   /* footer style */
+  
   /* footer style ends */
   
   @media(max-width: 600px) {
