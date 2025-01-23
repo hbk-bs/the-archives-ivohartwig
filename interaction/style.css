@@ -94,93 +94,46 @@
 	text-align:center;
 	color:white;
   }
-  
-  .image-container{
-	display: flex;
-	flex-direction:row;  
-	justify-content:space-evenly;
-	flex-wrap: wrap;
-  }
-  
-  .algo {
-	padding:10px;
-	height:auto;
-	border-radius: 20px;
-	width: 300px
-  }
-  
-  .image-container2{
-	display: flex;
-	flex-direction:row;  
-	justify-content:space-evenly;
-	flex-wrap: wrap;
-  }
-  
-  .p5 {
-	padding:10px;
-	height:auto;
-	border-radius: 20px;
-	width: 300px
-  }
-  
-  .p5:hover {
-	transform: scale(1.05);
-	transform: scale(x, y);
-  }
-  
-  figcaption { 
+
+  h3 {
 	text-align:center;
 	color:white;
-	margin-bottom:15px;
   }
   
-  a.Doku {
+  .REFLECTION {
+	background-color: #515251;
+	margin:15px;
+	padding: 10px;
+	border-radius: 10px;
+  }
+
+  .REFLECTION p {
 	color:white;
 	display:flex;
 	justify-content:space-evenly;
 	flex-wrap: wrap;
 	margin:20px;
-   }
-  
-  a.Doku:hover {
-	transform: scale(1.05);
-	transform: scale(x, y);
   }
-  
-  .Thema1 {
-	background-color: #515251;
-	margin:15px;
-	padding: 10px;
-	border-radius: 10px;
-  }
-  
-  .Thema2 {
-	background-color: #515251;
-	margin:15px;
-	padding: 10px;
-	border-radius: 10px;
-  }
-  
-  .Thema3 {
+
+  .THEMA1 {
 	background-color: #515251;
 	margin:15px;
 	padding: 10px;
 	border-radius: 10px;
   }
 
-  .Thema4 {
+  .BACK {
 	background-color: #515251;
 	margin:15px;
 	padding: 10px;
 	border-radius: 10px;
   }
 
-  .Thema5 {
-	background-color: #515251;
-	margin:15px;
-	padding: 10px;
-	border-radius: 10px;
+  .BACK:hover {
+	background-color: black;
   }
+
+
   
   
   
