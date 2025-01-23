@@ -45,7 +45,7 @@
   body {
 	  max-width: auto;
 	  margin: 0 auto;
-	font-family:sans-serif;
+	  font-family:sans-serif;
 	   }
   
   
@@ -90,7 +90,6 @@
   /* header style ends  */
   
   /* main style */
-
   h2 {
 	text-align:center;
 	color:white;
@@ -114,21 +113,6 @@
 	background-color: black;
 
   }
-  
- 
-  
-  
-  
-  
-  
-  
-  
-	  
-  
-  
-   
-	
-  
   /* main style ends */
   
   /* footer style */
