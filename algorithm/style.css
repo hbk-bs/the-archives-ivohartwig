@@ -115,7 +115,7 @@
   }
   
   a.Doku {
-	color:white;
+	color:black;
 	display:flex;
 	justify-content:space-evenly;
 	flex-wrap: wrap;
@@ -143,7 +143,7 @@
   }
 
   .THEMA1 {
-	background-color: #515251;
+	background-color:white;
 	margin:15px;
 	padding: 10px;
 	border-radius: 10px;
