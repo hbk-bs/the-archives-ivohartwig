@@ -176,3 +176,9 @@ if (x3 < -radius || y3 < -radius) {
 
   
 }
+
+function keyPressed() {
+  if (key === 'g') {
+    saveGif('loop', 5);
+  }
+}

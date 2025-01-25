@@ -81,3 +81,10 @@ function mousePressed() {
     segmentor.speed *= -1; // Invertiert die Geschwindigkeit jedes Segmentors
   });
 }
+
+function keyPressed() {
+  if (key === 'g') {
+    saveGif('loop', 5);
+  }
+}
+

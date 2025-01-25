@@ -65,4 +65,12 @@ function draw() {
     let y1 = centerY1 + amplitude * sin(angle1);
     speed1 = 1
   }
+
+  
+}
+
+function keyPressed() {
+  if (key === 'g') {
+    saveGif('loop', 5);
+  }
 }

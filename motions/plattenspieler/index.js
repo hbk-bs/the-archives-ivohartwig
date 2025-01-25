@@ -193,4 +193,11 @@ function handleInteraction(px, py) {
   }
 }
 
+function keyPressed() {
+  if (key === 'g') {
+    saveGif('loop', 5);
+  }
+}
+
+
 
