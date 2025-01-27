@@ -110,3 +110,10 @@ function mousePressed() {
     }
 }
 
+//Save as gif
+function keyPressed() {
+    if (key === 'g') {
+      saveGif('loop', 5);
+    }
+  }
+

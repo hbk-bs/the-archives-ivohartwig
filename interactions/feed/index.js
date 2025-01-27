@@ -59,3 +59,10 @@ function mouseReleased(){
     fett = 0.4
   }
 }
+
+//Save as gif
+function keyPressed() {
+  if (key === 'g') {
+    saveGif('loop', 5);
+  }
+}

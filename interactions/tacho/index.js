@@ -75,3 +75,10 @@ function mouseReleased() {
   isMousePressed = false; // Setze Status auf "losgelassen"
   tachrunter = true
 }
+
+//Save as gif
+function keyPressed() {
+  if (key === 'g') {
+    saveGif('loop', 5);
+  }
+}
