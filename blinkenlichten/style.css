@@ -131,15 +131,28 @@
   
     .p5 {
       padding:10px;
-      height:auto;
+      height:390px;
       border-radius: 20px;
       width: 300px
       }
+
+      video {
+        padding: 10px;
+        height: 390px; /* Einheitliche Höhe wie die Bilder */
+        border-radius: 20px;
+        width: 300px; /* Breite bleibt gleich */
+        object-fit: cover; /* Video-Inhalt wird zugeschnitten, um die Höhe einzuhalten */
+    }
 
       .p5:hover {
         transform: scale(1.05);
         transform: scale(x, y);
         }
+
+        .video:hover {
+          transform: scale(1.05);
+          transform: scale(x, y);
+          }
 
       figcaption { 
         text-align:center;
