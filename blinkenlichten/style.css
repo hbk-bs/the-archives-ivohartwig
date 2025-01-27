@@ -115,12 +115,37 @@
 	margin:20px;
   }
 
-  .THEMA1 {
-	background-color: #515251;
+  .THEMA {
+	background-color:white;
 	margin:15px;
 	padding: 10px;
 	border-radius: 10px;
   }
+
+  .image-container2{
+    display: flex;
+    flex-direction:row;  
+    justify-content:space-evenly;
+    flex-wrap: wrap;
+    }
+  
+    .p5 {
+      padding:10px;
+      height:auto;
+      border-radius: 20px;
+      width: 300px
+      }
+
+      .p5:hover {
+        transform: scale(1.05);
+        transform: scale(x, y);
+        }
+
+      figcaption { 
+        text-align:center;
+        color:black;
+        margin-bottom:15px;
+        }
 
   .BACK {
 	background-color: #515251;
