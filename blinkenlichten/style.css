@@ -100,7 +100,7 @@
 	color:white;
   }
   
-  .REFLECTION {
+  .REFLECTION, .CODE {
 	background-color: #515251;
 	margin:15px;
 	padding: 10px;
@@ -113,6 +113,10 @@
 	justify-content:space-evenly;
 	flex-wrap: wrap;
 	margin:20px;
+  }
+
+  .CODE:hover {
+  background-color: black;
   }
 
   .THEMA {
