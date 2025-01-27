@@ -1,77 +1,112 @@
-let centerX, centerY; // Mittelpunkt des Kreises
-let radiustacho; // Radien der Kreise
+// Variablen für Timer
+let startTime = null; // Speichert die Startzeit
+let isTiming = false; // Gibt an, ob der Timer aktiv ist
+let elapsed = 0; // Verstrichene Zeit
 
-let angle = 1.9; // Aktueller Winkel für Mitte
-let speed = 0.05;
-let isMousePressed = false; // Variable für den Mausstatus
-let tachrunter = false
-
+// Variablen für Interaktion
 let x = (n) => width * n;
 let y = (n) => height * n;
 let s = (n) => (height > width ? height * n : width * n);
-let circleX = 0.8
-let circleY = 0.8
-let radiuspedal = 0.1
 
+let circleX = 0.5;
+let circleY = 0.5;
+let circleRadius = 0.3;
+
+let circleImage; // Bild für normalen Zustand
+let circleImage2; // Bild für Wand-Zustand
+
+let isAtWall = false; // Zustand, ob der Kreis die Wand berührt
+
+let noiseOffsetX = 0;
+let noiseOffsetY = 1000; // Verschiedene Offsets für X und Y
+
+let cooldown = false; // Cooldown für mousePressed
+
+// Bilder vorladen
+function preload() {
+    circleImage = loadImage("https://hbk-bs.github.io/the-archives-ivohartwig/assets/images/Happy.png");
+    circleImage2 = loadImage("https://hbk-bs.github.io/the-archives-ivohartwig/assets/images/Dead.png");
+}
+
+// Canvas initialisieren
 function setup() {
-  createCanvas(400, 400);
-
-  // Setze Radien relativ zur Leinwandgröße
-  radiustacho = width * 0.4; // 40% der Breite
-
-  centerX = width / 2; // Zentrum des Kreises in der Mitte der Canvas
-  centerY = height / 2;
+    createCanvas(330, 330);
+    noStroke();
 }
 
+// Prüft, ob der Kreis eine Wand berührt
+function isNearWall() {
+    return (
+        circleX < 0.16 || // Linke Wand
+        circleX > 0.84 || // Rechte Wand
+        circleY < 0.16 || // Obere Wand
+        circleY > 0.84   // Untere Wand
+    );
+}
+
+// Zeichnet die Szene
 function draw() {
-  background(0);
+    background("black");
 
-  // Berechnung der Linie
-  let x2 = centerX + radiustacho * cos(angle);
-  let y2 = centerY + radiustacho * sin(angle);
+    // Kreisfarbe basierend auf Position des Kreises
+    fill(isNearWall() ? "red" : "white");
+    ellipse(x(circleX), y(circleY), s(circleRadius));
 
-  // Zeichne die Linie
-  stroke("white");
-  strokeWeight(2);
-  line(centerX, centerY, x2, y2);
-
-  // Wenn Maus gedrückt, erhöhe den Winkel
-  if (isMousePressed && angle < PI * 1.9) {
-    angle += speed;
-    tachrunter = false; // Während Maus gedrückt, kein Absenken
-  }
-
-  // Wenn tachrunter aktiv, verringere den Winkel
-  if (tachrunter && angle > 1.9) {
-    angle -= speed * 0.2;
-  }
-
-  // Begrenze den Winkelbereich
-  if (angle > PI * 1.9) {
-    angle = PI * 1.9; // Oberes Limit
-    tachrunter = true; // Absenken aktivieren
-  }
-  if (angle < 1.9) {
-    angle = 1.9; // Unteres Limit
-    tachrunter = false; // Absenken deaktivieren
-  }
+    // Zeigt das passende Bild basierend auf Wand-Zustand
+    imageMode(CENTER);
+    if (isAtWall) {
+        image(circleImage2, x(circleX), y(circleY), s(0.2), s(0.2));
+    } else {
+        image(circleImage, x(circleX), y(circleY), s(0.2), s(0.2));
+    }
   
+    // Zeigt die laufende Zeit an 
+    if (isTiming) {
+        elapsed = Date.now() - startTime; // Zeit seit Start
+        document.getElementById("time").textContent = `ELAPSED TIME: ${(elapsed /               1000).toFixed(1)} SECONDS`;
+    }
 
-  // Zeichne den Kreis
-  strokeWeight(0);
-  circle(x(circleX), y(circleY), s(radiuspedal));
+    // Zeitanzeige, wenn der Timer gestoppt wurde und der Kreis die Wand berührt
+    if (!isTiming && isNearWall()) {
+        document.getElementById("time").textContent = `ELAPSED TIME: ${(elapsed / 1000).toFixed(1)} SECONDS`;
+    }
 }
 
-
+// Reagiert auf Mausklicks
 function mousePressed() {
-  let d1 = dist(mouseX, mouseY, x(circleX), y(circleY)); // Zweiter Kreis (Stop)
-  if (d1 < s(radiuspedal)){
-  isMousePressed = true; // Setze Status auf "gedrückt"
-  tachrunter = false 
-  }
+    if (cooldown) return; // Ignoriert Klicks während des Cooldowns
+
+    // Überprüft, ob der Klick auf den Kreis erfolgt ist
+    let d2 = dist(mouseX, mouseY, x(circleX), y(circleY));
+    if (d2 < s(circleRadius) / 2) {
+        // Timer starten, wenn nicht aktiv
+        if (!isTiming) {
+            startTime = Date.now();
+            isTiming = true;
+            elapsed = 0;
+            document.getElementById("time").textContent = "ELAPSED TIME: 0.0 SECONDS";
+        }
+
+        // Neue zufällige Position für den Kreis
+        circleX = noise(noiseOffsetX);
+        circleY = noise(noiseOffsetY);
+
+        noiseOffsetX += 0.3; // Offset für glattere Übergänge erhöhen
+        noiseOffsetY += 0.3;
+        // Aktualisiert den Zustand, ob der Kreis eine Wand berührt
+        isAtWall = isNearWall();
+
+        // Timer stoppen, wenn der Kreis die Wand berührt
+        if (isNearWall()) {
+            isTiming = false;
+            elapsed = Date.now() - startTime;
+
+            // Cooldown aktivieren
+            cooldown = true;
+            setTimeout(() => {
+                cooldown = false; // Cooldown deaktivieren nach 5 Sekunden
+            }, 1000); // 1 Sekunden warten
+        }
+    }
 }
 
-function mouseReleased() {
-  isMousePressed = false; // Setze Status auf "losgelassen"
-  tachrunter = true
-}
