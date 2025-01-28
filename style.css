@@ -88,6 +88,25 @@
 	flex-direction:row;
 	justify-content:space-evenly;
   }
+  
+  .NAVWEB {
+  background-color:#989898c7;
+  margin:15px;
+  padding: 1px;
+  border-radius: 10px;
+  }
+
+  .navtext {
+    color: white;
+  }
+
+  .navtext:hover {
+    color: white;
+  }
+
+  .NAVWEB:hover {
+  background-color: black;
+  }
   /* header style ends  */
   
   /* main style */
@@ -104,25 +123,6 @@
 	border-radius: 10px;
   }
   
-  .NAVWEB {
-	background-color:#989898c7;
-	margin:15px;
-	padding: 1px;
-	border-radius: 10px;
-  }
-
-  .navtext {
-    color: white;
-  }
-
-  .navtext:hover {
-    color: white;
-  }
-
-  .NAVWEB:hover {
-	background-color: black;
-
-  }
   /* main style ends */
   
   /* footer style */

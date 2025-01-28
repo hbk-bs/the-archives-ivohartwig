@@ -45,7 +45,8 @@
   body {
 	  max-width: auto;
 	  margin: 0 auto;
-	font-family:sans-serif;
+	  font-family:sans-serif;
+    background-color: white;
 	   }
   
   
