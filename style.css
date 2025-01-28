@@ -46,6 +46,7 @@
 	  max-width: auto;
 	  margin: 0 auto;
 	  font-family:sans-serif;
+    background-color:white;
 	   }
   
   
@@ -104,10 +105,18 @@
   }
   
   .NAVWEB {
-	background-color: #515251;
+	background-color:#989898c7;
 	margin:15px;
-	padding: 10px;
+	padding: 1px;
 	border-radius: 10px;
+  }
+
+  .navtext {
+    color: white;
+  }
+
+  .navtext:hover {
+    color: white;
   }
 
   .NAVWEB:hover {
