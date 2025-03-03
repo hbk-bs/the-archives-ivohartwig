@@ -108,7 +108,9 @@
 
 @media (max-width: 600px) {
   .text {
-      width: 100%; /* Mehr Breite auf kleineren Bildschirmen */
+      width: 95%; /* Größere Breite auf kleineren Bildschirmen */
+      
+      
   }
 }
 
