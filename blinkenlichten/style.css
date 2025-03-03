@@ -108,7 +108,7 @@
   .text {
       width: 95%; /* Größere Breite auf kleineren Bildschirmen */
       max-width: none; /* Falls max-width das Problem verursacht */
-      line-height: 0.99;
+      line-height: 1.2;
   }
 }
 
