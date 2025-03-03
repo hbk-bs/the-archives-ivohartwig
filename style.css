@@ -116,7 +116,7 @@
   }
 
   .text {
-    text-align: justify;
+    text-align: left;
     max-width: 800px; /* Begrenzung der Breite */
     width: 80%; /* Anpassung an verschiedene Bildschirmgrößen */
     margin: 0 auto; /* Zentrierung */
