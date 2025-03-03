@@ -101,7 +101,7 @@
 
   .text{
     text-align: justify;
-    text-align-last:none;
+    text-align-last:left ;
   }
 
   h3 {
