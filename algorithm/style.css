@@ -104,13 +104,14 @@
     max-width: 800px; /* Begrenzung der Breite */
     width: 80%; /* Anpassung an verschiedene Bildschirmgrößen */
     margin: 0 auto; /* Zentrierung */
+    
 }
 
 @media (max-width: 600px) {
   .text {
       width: 95%; /* Größere Breite auf kleineren Bildschirmen */
       max-width: none; /* Falls max-width das Problem verursacht */
-      
+      line-height: 0.95;
   }
 }
 
