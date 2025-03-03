@@ -120,6 +120,7 @@
     max-width: 800px; /* Begrenzung der Breite */
     width: 80%; /* Anpassung an verschiedene Bildschirmgrößen */
     margin: 0 auto; /* Zentrierung */
+    padding: 20px;
     
 }
 
@@ -129,6 +130,11 @@
       max-width: none; /* Falls max-width das Problem verursacht */
       line-height: 1.2;
   }
+}
+
+h4 {
+  
+
 }
   
   
@@ -145,7 +151,7 @@
     /* display:flex;
     justify-content:space-evenly;
     flex-wrap: wrap; */
-    margin:20px;
+    margin:20px 0;
     }
   
   /* main style ends */
