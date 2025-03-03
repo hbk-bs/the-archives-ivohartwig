@@ -108,7 +108,7 @@
 
 @media (max-width: 600px) {
   .text {
-      width: 95%; /* Mehr Breite auf kleineren Bildschirmen */
+      width: 100%; /* Mehr Breite auf kleineren Bildschirmen */
       padding: 1rem; /* Weniger Padding für kleinere Displays */
   }
 }
