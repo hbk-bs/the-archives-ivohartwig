@@ -109,7 +109,7 @@
 @media (max-width: 600px) {
   .text {
       width: 95%; /* Größere Breite auf kleineren Bildschirmen */
-      
+      max-width: none; /* Falls max-width das Problem verursacht */
       
   }
 }
