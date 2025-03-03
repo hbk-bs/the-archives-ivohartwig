@@ -114,6 +114,22 @@
 	text-align:center;
 	color:white;
   }
+
+  .text {
+    text-align: justify;
+    max-width: 800px; /* Begrenzung der Breite */
+    width: 80%; /* Anpassung an verschiedene Bildschirmgrößen */
+    margin: 0 auto; /* Zentrierung */
+    
+}
+
+@media (max-width: 600px) {
+  .text {
+      width: 95%; /* Größere Breite auf kleineren Bildschirmen */
+      max-width: none; /* Falls max-width das Problem verursacht */
+      line-height: 0.99;
+  }
+}
   
   
   .REFLECTION {
@@ -121,7 +137,16 @@
 	margin:15px;
 	padding: 10px;
 	border-radius: 10px;
+  color:white
   }
+
+  .REFLECTION p {
+    color:white;
+    display:flex;
+    justify-content:space-evenly;
+    flex-wrap: wrap;
+    margin:20px;
+    }
   
   /* main style ends */
   
