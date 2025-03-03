@@ -91,9 +91,17 @@
   /* header style ends  */
   
   /* main style */
+
+  
+
   h2 {
 	text-align:center;
 	color:white;
+  }
+
+  .text{
+    text-align: justify;
+    text-align-last:none;
   }
 
   h3 {
