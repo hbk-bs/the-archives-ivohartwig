@@ -142,9 +142,9 @@
 
   .REFLECTION p {
     color:white;
-    display:flex;
+    /* display:flex;
     justify-content:space-evenly;
-    flex-wrap: wrap;
+    flex-wrap: wrap; */
     margin:20px;
     }
   
