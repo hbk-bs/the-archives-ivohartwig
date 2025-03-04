@@ -123,15 +123,29 @@
   .image-container{
 	display: flex;
 	flex-direction:row;  
-	justify-content:space-evenly;
+	justify-content:space-evenly ;
 	flex-wrap: wrap;
   }
+
+  .image-container figure {
+   display: flex;
+   flex-direction: column;
+   max-width: 300px;
+ }
+
   
   .algo {
-	padding:10px;
-	height:auto;
-	border-radius: 20px;
-	width: 300px
+    padding:10px;
+    height:390px;
+    border-radius: 20px;
+    width: 300px
+  }
+
+  figcaption { 
+  text-align:left;
+  color:black;
+  margin-bottom:15px;
+  padding-left: 10px;
   }
   
   a.Doku {
