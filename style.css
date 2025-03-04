@@ -120,7 +120,7 @@
     max-width: 800px; /* Begrenzung der Breite */
     width: 80%; /* Anpassung an verschiedene Bildschirmgrößen */
     margin: 0 auto; /* Zentrierung */
-    padding: 20px;
+    
     
 }
 
@@ -149,7 +149,7 @@ h4 {
 
   .REFLECTION p {
     color:white;
-     display:flex;
+    display:flex;
     justify-content:space-evenly;
     flex-wrap: wrap; 
     margin:20px ;
