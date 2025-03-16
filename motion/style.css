@@ -43,7 +43,7 @@
   /*css reset soft end*/
   
   body {
-	  max-width: auto;
+	  max-width: 900px;
 	  margin: 0 auto;
 	font-family:sans-serif;
   background-color: white;
