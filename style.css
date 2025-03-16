@@ -148,12 +148,9 @@ h4 {
   }
 
   .REFLECTION p {
-    color:white;
-    display:flex;
-    justify-content:space-evenly;
-    flex-wrap: wrap; 
-    margin:20px ;
-    }
+  color:white;
+  margin:20px ;
+  }
   
   /* main style ends */
   
