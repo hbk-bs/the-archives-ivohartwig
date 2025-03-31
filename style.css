@@ -43,7 +43,7 @@
   /*css reset soft end*/
   
   body {
-	  max-width: auto;
+	  max-width: 900px;
 	  margin: 0 auto;
 	  font-family:sans-serif;
     background-color:white;
@@ -151,6 +151,9 @@ h4 {
    color:white;
    margin:20px ;
    }
+  color:white;
+  margin:20px ;
+  }
   
   /* main style ends */
   
