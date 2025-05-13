@@ -1,0 +1,53 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: lightgray;
+    font-family: sans-serif;
+}
+
+main {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 25px;
+}
+
+.content, .content1 {
+    background: black;
+    color: white;
+    padding: 15px;
+    margin: 10px;
+}
+
+.content1 {
+    font-weight: bold;
+}
+
+canvas {
+    margin: 10px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+    .content, .content1 {
+        font-size: 14px;
+    }
+}
